@@ -18,8 +18,12 @@ export default class CreateFood extends Component{
             meal: '',
             food: '',
             calories: 0,
-            users: []
+            users: [],
+            breakfast: 'Breakfast',
+            lunch: 'Lunch',
+            dinner: 'Dinner'
         }
+
 
     }
 
@@ -50,7 +54,9 @@ export default class CreateFood extends Component{
 
     onChangeFood(e){
         this.setState({
-            food: e.target.value
+            food: e.target.value,
+            lunch: e.target.value,
+            dinner: e.target.value
         });
     }
 
@@ -100,12 +106,20 @@ export default class CreateFood extends Component{
 
                     <div className="form-group">
                         <label>Food: </label>
-                        <input  type="text"
+                        <select  ref="food_Input"
                                 required
                                 className="form-control"
                                 value={this.state.food}
-                                onChange={this.onChangeFood}
-                        />
+                                onChange={this.onChangeFood}>
+
+                            <option
+                                        value={this.state.breakfast}>Breakfast </option>
+                            <option
+                                        value={this.state.lunch}>Lunch </option>
+                                <option
+                                        value={this.state.dinner}>Dinner</option>
+
+                        </select>
                     </div>
                     <div className="form-group">
                         <label>Meal: </label>

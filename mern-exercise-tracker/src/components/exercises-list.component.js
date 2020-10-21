@@ -54,7 +54,6 @@ export default class ExerciseList extends Component { //class component
             return <Exercise exercise={currentexercise} deleteExercise={this.deleteExercise} key={currentexercise._id}/>;
         })
     }
-
     render() {
         return (
             <div>
