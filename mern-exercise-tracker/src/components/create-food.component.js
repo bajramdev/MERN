@@ -15,7 +15,7 @@ export default class CreateFood extends Component{
 
         this.state = {
             username: '',
-            meal: '',
+            meal: ['Breakfast' , 'Lunch' , 'Dinner'],
             food: '',
             calories: 0,
             users: [],
@@ -34,6 +34,7 @@ export default class CreateFood extends Component{
                 if (response.data.length > 0){
                     this.setState({
                         users: response.data.map(user => user.username),
+                        meal: response.data.map(mealOptions => mealOptions.meal),
                         username: response.data[0].username
                     })
                 }
@@ -55,8 +56,6 @@ export default class CreateFood extends Component{
     onChangeFood(e){
         this.setState({
             food: e.target.value,
-            lunch: e.target.value,
-            dinner: e.target.value
         });
     }
 
@@ -104,30 +103,26 @@ export default class CreateFood extends Component{
                     </select>
                 </div>
 
+
                     <div className="form-group">
-                        <label>Food: </label>
-                        <select  ref="food_Input"
+                        <label>Meal: </label>
+                        <select ref="meal_input"
                                 required
                                 className="form-control"
-                                value={this.state.food}
-                                onChange={this.onChangeFood}>
-
-                            <option
-                                        value={this.state.breakfast}>Breakfast </option>
-                            <option
-                                        value={this.state.lunch}>Lunch </option>
-                                <option
-                                        value={this.state.dinner}>Dinner</option>
-
+                                value={this.state.meal}
+                                onChange={this.onChangeMeal}>
+                           <option value ={this.state.breakfast}>Breakfast </option>
+                            <option value ={this.state.lunch}>Lunch </option>
+                            <option value ={this.state.dinner}>Dinner </option>
                         </select>
                     </div>
                     <div className="form-group">
-                        <label>Meal: </label>
+                        <label>Food: </label>
                         <input
                             type="text"
                             className="form-control"
-                            value={this.state.meal}
-                            onChange={this.onChangeMeal}
+                            value={this.state.food}
+                            onChange={this.onChangeFood}
                         />
                     </div>
                     <div className="form-group">
