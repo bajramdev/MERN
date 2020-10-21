@@ -10,6 +10,8 @@ const userSchema = new Schema({
         trim: true,
         minlength: 3
     },
+    height: { type: Number, required: true,  },
+    weight: { type: Number, required: true,  },
 },{
     timestamp: true,
 });

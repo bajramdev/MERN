@@ -9,6 +9,9 @@ router.route('/').get((req, res) => {
 
 router.route('/add').post((req, res) => {
     const username = req.body.username;
+    const weight = Number(req.body.weight);
+    const height = Number(req.body.height);
+    //const exerciseActiviy //Select 3-1 times, 5 times
 
     const newUser = new User({username});
 
