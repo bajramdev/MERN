@@ -1,4 +1,4 @@
-const router = require('Express').Router();
+const router = require('express').Router();
 let Food = require('../models/food.model');
 
 
@@ -12,11 +12,13 @@ router.route('/add').post((req,res) => {
     const username = req.body.username;
     const meal = req.body.meal;
     const food = req.body.food;
+    const Calories = req.body.Calories;
 
     const newFood = new Food({
        username,
        meal,
-       food
+       food,
+        calories
     });
 
     newFood.save()
@@ -45,6 +47,7 @@ router.route('/update/:id').post((req,res) => {
             food.username = req.body.username;
             food.meal = req.body.meal;
             food.food = req.body.food;
+            food.calories = req.body.calories;
 
             food.save()
                 .then(() => res.json('Food updated!'))

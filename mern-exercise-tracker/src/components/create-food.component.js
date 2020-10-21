@@ -7,7 +7,7 @@ export default class CreateFood extends Component{
         super(props);
 
         this.onChangeUsername = this.onChangeUsername.bind(this); //binding
-        this.onChageMeal = this.onChageMeal.bind(this);
+        this.onChangeMeal = this.onChangeMeal.bind(this);
         this.onChangeFood = this.onChangeFood.bind(this);
         this.onChangeCalories = this.onChangeCalories.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -17,7 +17,8 @@ export default class CreateFood extends Component{
             username: '',
             meal: '',
             food: '',
-            calories: 0
+            calories: 0,
+            users: []
         }
 
     }
@@ -41,7 +42,7 @@ export default class CreateFood extends Component{
         });
     }
 
-    onChageMeal(e){
+    onChangeMeal(e){
         this.setState({
             meal: e.target.value
         });
@@ -80,10 +81,56 @@ export default class CreateFood extends Component{
                 <h3>Create New Food</h3>
                 <form onSubmit={this.onSubmit}>
                 <div className="form-group">
-
-
-
+                    <label>Username: </label>
+                    <select ref ="userInput"
+                            required
+                            className="form-control"
+                            value={this.state.username}
+                            onChange={this.onChangeUsername}>
+                        {
+                            this.state.users.map(function (user) {
+                                return <option
+                                    key={user}
+                                    value={user}>{user}
+                                </option>
+                            })
+                        }
+                    </select>
                 </div>
+
+                    <div className="form-group">
+                        <label>Food: </label>
+                        <input  type="text"
+                                required
+                                className="form-control"
+                                value={this.state.food}
+                                onChange={this.onChangeFood}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Meal: </label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            value={this.state.meal}
+                            onChange={this.onChangeMeal}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Calories: </label>
+                        <div>
+                            <input
+                                type="number"
+                                className="form-control"
+                                value={this.state.calorie}
+                                onChange={this.onChangeDate}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="form-group">
+                        <input type="submit" value="Create Food" className="btn btn-primary"/>
+                    </div>
                 </form>
 
             </div>
