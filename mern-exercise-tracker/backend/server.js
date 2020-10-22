@@ -26,7 +26,7 @@ const foodRouter = require('./routes/foods');
 
 app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
-app.use('/foods' , foodRouter);
+app.use('/food' , foodRouter);
 //app.use('/sleep' , sleepRouter);
 
 app.listen(port, () => {
