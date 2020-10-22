@@ -34,7 +34,6 @@ export default class CreateFood extends Component{
                 if (response.data.length > 0){
                     this.setState({
                         users: response.data.map(user => user.username),
-                        meal: response.data.map(mealOptions => mealOptions.meal),
                         username: response.data[0].username
                     })
                 }
@@ -48,9 +47,8 @@ export default class CreateFood extends Component{
     }
 
     onChangeMeal(e){
-        this.setState({
-            meal: e.target.value
-        });
+        this.setState({value: e.target.value});
+        console.log(e.target.value);
     }
 
     onChangeFood(e){
@@ -60,9 +58,8 @@ export default class CreateFood extends Component{
     }
 
     onChangeCalories(e) {
-        this.setState({
-            calories: e.target.value
-        })
+        this.setState({ calories: e.target.value});
+        console.log(e.target.value);
     }
 
     onSubmit(e){
@@ -78,6 +75,7 @@ export default class CreateFood extends Component{
 
         axios.post('http://localhost:5000/food/add' , food)
             .then(res => console.log(res.data));
+        console.log(e.target.value);
     }
 
     render(){
@@ -102,18 +100,17 @@ export default class CreateFood extends Component{
                         }
                     </select>
                 </div>
-
-
                     <div className="form-group">
                         <label>Meal: </label>
                         <select ref="meal_input"
                                 required
                                 className="form-control"
-                                value={this.state.meal}
+                                value={this.state.value}
                                 onChange={this.onChangeMeal}>
-                           <option value ={this.state.breakfast}>Breakfast </option>
-                            <option value ={this.state.lunch}>Lunch </option>
-                            <option value ={this.state.dinner}>Dinner </option>
+                           <option name="breakfast" value={this.state.breakfast} onChange={this.onChangeMeal}>Breakfast
+                           </option>
+                            <option name="lunch" value={this.state.lunch} onChange={this.onChangeMeal}>Lunch</option>
+                            <option name="dinner" value={this.state.dinner} onChange={this.onChangeMeal}>Dinner</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -129,10 +126,10 @@ export default class CreateFood extends Component{
                         <label>Calories: </label>
                         <div>
                             <input
-                                type="number"
+                                name="calories"
                                 className="form-control"
-                                value={this.state.calorie}
-                                onChange={this.onChangeDate}
+                                value={this.state.calories}
+                                onChange={this.onChangeCalories}
                             />
                         </div>
                     </div>

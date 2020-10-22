@@ -39,13 +39,17 @@ export default class CreateExercise extends Component {
       this.setState({
           username: e.target.value
       });
- }
+        console.log(e.target.value);
+
+    }
 
 
     onChangeDescription(e) {
         this.setState({
             description: e.target.value
         });
+        console.log(e.target.value);
+
     }
 
 
@@ -53,6 +57,8 @@ export default class CreateExercise extends Component {
         this.setState({
             duration: e.target.value
         });
+        console.log(e.target.value);
+
     }
 
 
@@ -77,6 +83,7 @@ export default class CreateExercise extends Component {
         axios.post('http://localhost:5000/exercises/add' , exercise)
             .then(res => console.log(res.data));
 
+        console.log(e.target.value);
 
     }
 
