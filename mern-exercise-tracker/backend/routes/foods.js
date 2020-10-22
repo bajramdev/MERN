@@ -47,7 +47,7 @@ router.route('/update/:id').post((req,res) => {
             food.username = req.body.username;
             food.meal = req.body.meal;
             food.food = req.body.food;
-            food.calories = req.body.calories;
+            food.calories = Number(req.body.calories);
 
             food.save()
                 .then(() => res.json('Food updated!'))

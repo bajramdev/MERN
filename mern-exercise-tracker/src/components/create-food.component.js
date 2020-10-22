@@ -15,13 +15,11 @@ export default class CreateFood extends Component{
 
         this.state = {
             username: '',
-            meal: ['Breakfast' , 'Lunch' , 'Dinner'],
+            meal: '',
             food: '',
             calories: 0,
             users: [],
-            breakfast: 'Breakfast',
-            lunch: 'Lunch',
-            dinner: 'Dinner'
+            meals: ['Breakfast', 'Lunch', 'Dinner']
         }
 
 
@@ -34,11 +32,13 @@ export default class CreateFood extends Component{
                 if (response.data.length > 0){
                     this.setState({
                         users: response.data.map(user => user.username),
+                        //meals: response.data.map(mealType => mealType.meal),
                         username: response.data[0].username
                     })
                 }
             })
     }
+
 
     onChangeUsername(e){
         this.setState({
@@ -47,7 +47,8 @@ export default class CreateFood extends Component{
     }
 
     onChangeMeal(e){
-        this.setState({value: e.target.value});
+        this.setState({
+            meal: e.target.value});
         console.log(e.target.value);
     }
 
@@ -73,8 +74,9 @@ export default class CreateFood extends Component{
         }
         console.log(food);
 
-        axios.post('http://localhost:5000/food/add' , food)
+        axios.post('http://localhost:5000/foods/add' , food)
             .then(res => console.log(res.data));
+        //  console.log(this.target.value);
         console.log(e.target.value);
     }
 
@@ -86,7 +88,7 @@ export default class CreateFood extends Component{
                 <div className="form-group">
                     <label>Username: </label>
                     <select ref ="userInput"
-                            required
+
                             className="form-control"
                             value={this.state.username}
                             onChange={this.onChangeUsername}>
@@ -103,14 +105,16 @@ export default class CreateFood extends Component{
                     <div className="form-group">
                         <label>Meal: </label>
                         <select ref="meal_input"
-                                required
                                 className="form-control"
-                                value={this.state.value}
+                                value={this.state.meal}
                                 onChange={this.onChangeMeal}>
-                           <option name="breakfast" value={this.state.breakfast} onChange={this.onChangeMeal}>Breakfast
-                           </option>
-                            <option name="lunch" value={this.state.lunch} onChange={this.onChangeMeal}>Lunch</option>
-                            <option name="dinner" value={this.state.dinner} onChange={this.onChangeMeal}>Dinner</option>
+                            {
+                                this.state.meals.map(list => (
+                                    <option key={list} value={list}>
+                                        {list}
+                                    </option>
+                                ))
+                            }
                         </select>
                     </div>
                     <div className="form-group">

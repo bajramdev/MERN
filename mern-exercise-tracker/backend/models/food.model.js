@@ -6,7 +6,7 @@ const foodSchema = new Schema({
     username: {type: String, required: true},
     meal: {type: String, required: true},
     food: {type: String, required: true},
-    calorie: {type: Number, required: true}
+    calories: {type: Number, required: true}
 },{
     timestamp: true,
 });
