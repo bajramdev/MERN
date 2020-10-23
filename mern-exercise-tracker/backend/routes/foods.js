@@ -4,7 +4,7 @@ let Food = require('../models/food.model');
 
 router.route('/').get((req,res) => {
     Food.find()
-        .then(foods => res.json(foods))
+        .then(food => res.json(food))
         .catch(err => res.status(400).json('Error: ' + err))
 });
 
@@ -27,7 +27,6 @@ router.route('/add').post((req,res) => {
 });
 
 router.route('/:id').get((req,res ) => {
-
     Food.findById(req.params.id)
         .then(food => res.json(food))
         .catch(e => res.status(400).json('Error ' , e))

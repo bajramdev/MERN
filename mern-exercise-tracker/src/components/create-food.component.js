@@ -74,7 +74,7 @@ export default class CreateFood extends Component{
         }
         console.log(food);
 
-        axios.post('http://localhost:5000/foods/add' , food)
+        axios.post('http://localhost:5000/food/add' , food)
             .then(res => console.log(res.data));
         //  console.log(this.target.value);
         console.log(e.target.value);

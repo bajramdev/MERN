@@ -9,7 +9,7 @@ const Food = props => ( //functional react component
         <td>{props.food.food}</td>
         <td>{props.food.calories}</td>
         <td>
-            <Link to={"/edite/"+props.food._id}>edit</Link> | <a href="#" onClick={() => {props.deleteFood(props.food._id)}}>delete</a>
+            <Link to={"/edite/"+props.food._id}>edit</Link> | <a href="#" onClick={() => { props.deleteFood(props.food._id)}}>delete</a>
         </td>
 
     </tr>
@@ -24,7 +24,7 @@ const Food = props => ( //functional react component
 
         this.deleteFood = this.deleteFood.bind(this);
 
-        this.state = {mealPlan: []}
+        this.state = {mealPlan: []};
     }
 
 
@@ -40,8 +40,8 @@ const Food = props => ( //functional react component
 
 
         deleteFood(id){
-        axios.delete('http://localhost:500/food/'+id)
-            .then(res => console.log(res.data))
+        axios.delete('http://localhost:5000/food/'+id)
+            .then(response => { console.log(response.data)});
 
         this.setState({
             mealPlan: this.state.mealPlan.filter(el => el._id !== id)

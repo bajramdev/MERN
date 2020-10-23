@@ -82,7 +82,7 @@ export default class EditFood extends Component{
         }
         console.log(food);
 
-        axios.post('http://localhost:5000/foods/update/'+this.props.match.params.id, food)
+        axios.post('http://localhost:5000/food/update/'+this.props.match.params.id, food)
             .then(res => console.log(res.data));
     }
 
