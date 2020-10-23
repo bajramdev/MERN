@@ -4,7 +4,7 @@ let Food = require('../models/food.model');
 
 router.route('/').get((req,res) => {
     Food.find()
-        .then(food => res.json(food))
+        .then(foods => res.json(foods))
         .catch(err => res.status(400).json('Error: ' + err))
 });
 
@@ -20,7 +20,6 @@ router.route('/add').post((req,res) => {
        food,
         calories
     });
-
     newFood.save()
         .then(() => res.json('Food has been added!'))
         .catch(err => res.status(400).json("Error with 404 " + err ))

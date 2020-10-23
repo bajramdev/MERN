@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export default class CreateFood extends Component{
+export default class EditFood extends Component{
 
     constructor(props) {
         super(props);

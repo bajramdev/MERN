@@ -7,6 +7,7 @@ import EditExercise from "./components/edit-exercise.component";
 import CreateExercise from "./components/create-exercise.component";
 import CreateUser from "./components/create-user.component";
 import CreateFood from "./components/create-food.component";
+import EditFood from "./components/edit-food.component";
 import FoodList from "./components/meal-plan.component";
 
 
@@ -21,8 +22,8 @@ function App() {
                 <Route path="/create" component={CreateExercise} />
                 <Route path="/user" component={CreateUser} />
                 <Route path="/food" component={CreateFood} />
-                <Route path="/edit/:id" component={EditFood} />
-                <Route path="/mealPlan" component={FoodsList} />
+                <Route path="/edite/:id" component={EditFood} />
+                <Route path="/mealPlan" component={FoodList} />
             </div>
         </Router>
     );
