@@ -12,7 +12,7 @@ router.route('/add').post((req,res) => {
     const username = req.body.username;
     const meal = req.body.meal;
     const food = req.body.food;
-    const calories = req.body.calories;
+    const calories = Number(req.body.calories);
 
     const newFood = new Food({
        username,
