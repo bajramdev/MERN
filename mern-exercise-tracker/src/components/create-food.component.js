@@ -27,50 +27,20 @@ export default class CreateFood extends Component{
 
     componentDidMount() { //will be called before anything desplays on page
 
-
-
-
-         //will be called before anything desplays on page
-
-            axios.get('http://localhost:5000/seasons/')
-                .then(response => {
-                    if (response.data.length > 0) {
-                        this.setState({
-                            teams: response.data.map(team => team.name),
-                            //meals: response.data.map(mealType => mealType.meal),
-                            name: response.data[0].name
-                        })
-                    }
-                })
-
-
-         //will be called before anything desplays on page
-
-            axios.get('http://localhost:5000/teams/')
-                .then(response => {
-                    if (response.data.length > 0) {
-                        this.setState({
-                            teams: response.data.map(team => team.name),
-                            //meals: response.data.map(mealType => mealType.meal),
-                            name: response.data[0].name
-                        })
-                    }
-                })
-
-
-        axios.get('http://localhost:5000/drivers/')
+        axios.get('http://localhost:5000/users/')
             .then(response => {
-                if (response.data.length > 0) {
+                if (response.data.length > 0){
                     this.setState({
-                        drivers: response.data.map(driver => driver.name),
+                        users: response.data.map(user => user.username),
                         //meals: response.data.map(mealType => mealType.meal),
-                        name: response.data[0].name
+                        username: response.data[0].username
                     })
                 }
             })
     }
 
-onChangeUsername(e){
+
+    onChangeUsername(e){
         this.setState({
             username: e.target.value
         });
